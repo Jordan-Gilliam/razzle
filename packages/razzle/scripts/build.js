@@ -23,7 +23,7 @@ const printErrors = require('razzle-dev-utils/printErrors');
 const clearConsole = require('react-dev-utils/clearConsole');
 const logger = require('razzle-dev-utils/logger');
 const FileSizeReporter = require('react-dev-utils/FileSizeReporter');
-const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages');
+const formatWebpackMessages = require('razzle-dev-utils/formatWebpackMessages');
 const measureFileSizesBeforeBuild =
   FileSizeReporter.measureFileSizesBeforeBuild;
 const printFileSizesAfterBuild = FileSizeReporter.printFileSizesAfterBuild;
@@ -74,7 +74,10 @@ measureFileSizesBeforeBuild(paths.appBuildPublic)
     },
     err => {
       console.log(chalk.red('Failed to compile.\n'));
-      console.log((err.message || err) + '\n');
+      console.log(err);
+      console.log(err.message || err);
+      console.log();
+
       process.exit(1);
     }
   );
@@ -94,7 +97,7 @@ function build(previousFileSizes) {
   }
 
   if (razzle.clearConsole === false || !!razzle.host || !!razzle.port) {
-    logger.warn(`Specifying options \`port\`, \`host\`, and \`clearConsole\` in razzle.config.js has been deprecated. 
+    logger.warn(`Specifying options \`port\`, \`host\`, and \`clearConsole\` in razzle.config.js has been deprecated.
 Please use a .env file instead.
 
 ${razzle.host !== 'localhost' && `HOST=${razzle.host}`}
@@ -121,7 +124,7 @@ ${razzle.port !== '3000' && `PORT=${razzle.port}`}
   return new Promise((resolve, reject) => {
     compile(clientConfig, (err, clientStats) => {
       if (err) {
-        reject(err);
+        return reject(err);
       }
       const clientMessages = formatWebpackMessages(
         clientStats.toJson({}, true)
@@ -155,7 +158,7 @@ ${razzle.port !== '3000' && `PORT=${razzle.port}`}
         console.log('Compiling server...');
         compile(serverConfig, (err, serverStats) => {
           if (err) {
-            reject(err);
+            return reject(err);
           }
           const serverMessages = formatWebpackMessages(
             serverStats.toJson({}, true)

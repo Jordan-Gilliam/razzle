@@ -23,7 +23,7 @@ describe('razzle start', () => {
       let outputTest;
       const run = new Promise(resolve => {
         const child = shell.exec(
-          './node_modules/.bin/razzle start --type=spa',
+          `${path.join('./node_modules/.bin/razzle')} start --type=spa`,
           () => {
             resolve(outputTest);
           }
@@ -46,10 +46,10 @@ describe('razzle start', () => {
 
     it('should build and run in spa mode', () => {
       let outputTest;
-      shell.exec('./node_modules/.bin/razzle build --type=spa');
+      shell.exec(`${path.join('./node_modules/.bin/razzle')} build --type=spa`);
       const run = new Promise(resolve => {
         const child = shell.exec(
-          './node_modules/.bin/serve -s build/public',
+          `${path.join('./node_modules/.bin/serve')} -s ${path.join('build/public')}`,
           () => {
             resolve(outputTest);
           }

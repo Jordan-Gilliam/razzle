@@ -39,7 +39,6 @@
       "git add"
     ]
   },
-  "dependencies": {},
   "jest": {
     "testPathIgnorePatterns": [
       "<rootDir>/coverage/",

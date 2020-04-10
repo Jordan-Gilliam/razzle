@@ -1,13 +1,13 @@
 {
   "name": "razzle-examples-with-now",
-  "version": "3.0.0",
   "license": "MIT",
+  "version": "3.0.0",
   "scripts": {
-    "start": "razzle start",
     "build": "razzle build",
-    "test": "razzle test --env=jsdom",
+    "now-start": "yarn start:prod",
+    "start": "razzle start",
     "start:prod": "NODE_ENV=production node build/server.js",
-    "now-start": "yarn start:prod"
+    "test": "razzle test --env=jsdom"
   },
   "dependencies": {
     "express": "^4.15.2",

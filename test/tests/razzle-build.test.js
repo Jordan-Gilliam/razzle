@@ -5,12 +5,15 @@
 
 const shell = require('shelljs');
 const util = require('../fixtures/util');
+const webpack = require('webpack');
+
+const webpackVersion = webpack.version ? webpack.version : 'old';
 
 shell.config.silent = false;
 
 const stageName = 'stage-build';
 
-describe('razzle build', () => {
+describe('razzle build using webpack ' + webpackVersion, () => {
   beforeAll(() => {
     util.teardownStage(stageName);
   });
