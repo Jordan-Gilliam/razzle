@@ -2,11 +2,10 @@
 
 const fs = require('fs');
 const chalk = require('chalk');
-const paths = require('./paths');
 
 // first search for setupTests.ts file
 // if .ts file not exists then looks for setupTests.js
-function getSetupTestsFilePath() {
+function getSetupTestsFilePath(paths) {
   const path = '<rootDir>/src/setupTests';
   if (fs.existsSync(paths.tsTestsSetup)) {
     return path.concat('.ts');
@@ -16,16 +15,25 @@ function getSetupTestsFilePath() {
   }
 }
 
-module.exports = (resolve, rootDir) => {
+module.exports = (
+  resolve,
+  rootDir,
+  razzle,
+  webpackObject,
+  plugins,
+  paths
+) => {
   // Use this instead of `paths.testsSetup` to avoid putting
   // an absolute filename into configuration after ejecting.
-  const setupTestsFile = getSetupTestsFilePath();
+
+  const setupTestsFile = getSetupTestsFilePath(paths);
 
   // TODO: I don't know if it's safe or not to just use / as path separator
   // in Jest configs. We need help from somebody with Windows to determine this.
   const config = {
     collectCoverageFrom: ['src/**/*.{js,jsx,mjs}'],
     setupTestFrameworkScriptFile: setupTestsFile,
+    // setupFiles: [resolve('config/polyfills.js')],
     testMatch: [
       '<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}',
       '<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs}',
@@ -40,7 +48,7 @@ module.exports = (resolve, rootDir) => {
       ),
     },
     transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$'],
-    moduleDirectories: ["node_modules"],
+    moduleDirectories: ['node_modules'],
     moduleNameMapper: {
       '^react-native$': 'react-native-web',
     },
@@ -94,5 +102,20 @@ module.exports = (resolve, rootDir) => {
       process.exit(1);
     }
   }
+
+  for (const [plugin, options] of plugins) {
+    // Check if plugin has a modifyJestConfig function.
+    // If it does, call it on the configs we created.
+    if (plugin.modifyJestConfig) {
+      config = plugin.modifyJestConfig(config, webpackObject, paths, options);
+    }
+  }
+
+  // Check if razzle.config.js has a modifyJestConfig function.
+  // If it does, call it on the configs we created.
+  config = razzle.modifyJestConfig
+    ? razzle.modifyJestConfig(config, webpackObject, paths)
+    : paths;
+
   return config;
 };
