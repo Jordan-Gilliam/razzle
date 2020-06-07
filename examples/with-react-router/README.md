@@ -2,29 +2,29 @@
 
 ## How to use
 
-### Using `create-razzle-app`
+<!-- START install generated instructions please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN update-examples TO UPDATE -->
+This is the development documentation for this example
 
-Execute [`create-razzle-app`](https://github.com/jaredpalmer/razzle/tree/master/packages/create-razzle-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+Clone the `razzle` repository:
 
 ```bash
-npx create-razzle-app --example with-react-router my-razzle-react-router-app
+git clone https://github.com/jaredpalmer/razzle.git
+
+cd razzle
+yarn install --frozen-lockfile --ignore-engines --network-timeout 30000
 ```
 
-### Download manually
-
-Download the example [or clone the whole project](https://github.com/jaredpalmer/razzle.git):
+Create and start the example:
 
 ```bash
-curl https://codeload.github.com/jaredpalmer/razzle/tar.gz/master | tar -xz --strip=2 razzle-master/examples/with-react-router
+node_modules/.bin/create-razzle-app --example file:examples/with-react-router with-react-router --no-install
+
 cd with-react-router
-```
-
-Install it and run:
-
-```bash
-yarn install
+yarn link ../ --all
 yarn start
 ```
+<!-- END install generated instructions please keep comment here to allow auto update -->
 
 ## Idea behind the example
 

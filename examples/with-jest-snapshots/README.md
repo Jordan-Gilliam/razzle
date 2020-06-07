@@ -1,22 +1,33 @@
 # Using Razzle and Jest Snapshots
 
 ## How to use
-Download the example [or clone the whole project](https://github.com/jaredpalmer/razzle.git):
+
+<!-- START install generated instructions please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN update-examples TO UPDATE -->
+This is the development documentation for this example
+
+Clone the `razzle` repository:
 
 ```bash
-curl https://codeload.github.com/jaredpalmer/razzle/tar.gz/master | tar -xz --strip=2 razzle-master/examples/with-jest
-cd with-jest
+git clone https://github.com/jaredpalmer/razzle.git
+
+cd razzle
+yarn install --frozen-lockfile --ignore-engines --network-timeout 30000
 ```
 
-Install it and run:
+Create and start the example:
 
 ```bash
-yarn install
-yarn test
+node_modules/.bin/create-razzle-app --example file:examples/with-jest-snapshots with-jest-snapshots --no-install
+
+cd with-jest-snapshots
+yarn link ../ --all
+yarn start
 ```
+<!-- END install generated instructions please keep comment here to allow auto update -->
 
 ## Idea behind the example
-This is an example of how to use [Jest Snapshots](http://facebook.github.io/jest/docs/en/snapshot-testing.html#snapshot-testing-with-jest) with a Razzle project. 
+This is an example of how to use [Jest Snapshots](http://facebook.github.io/jest/docs/en/snapshot-testing.html#snapshot-testing-with-jest) with a Razzle project.
 
 > Snapshot tests are a very useful tool whenever you want to make sure your UI does not change unexpectedly.
 > A typical snapshot test case for a mobile app renders a UI component, takes a screenshot, then compares it to a reference image stored alongside the test. The test will fail if the two images do not match: either the change is unexpected, or the screenshot needs to be updated to the new version of the UI component.

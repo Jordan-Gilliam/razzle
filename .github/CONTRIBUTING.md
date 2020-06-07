@@ -9,7 +9,6 @@ Hi there! Thanks for your interest in Razzle. This guide will help you get start
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
 - [Contributing to Razzle](#contributing-to-razzle)
-  - [Project Structure](#project-structure)
   - [Developing locally](#developing-locally)
     - [Commands](#commands)
     - [Updating your fork](#updating-your-fork)
@@ -23,7 +22,6 @@ Hi there! Thanks for your interest in Razzle. This guide will help you get start
   - [Getting help](#getting-help)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
-## Project Structure
 
 Razzle is monorepo made up of a several npm packages powered by Lerna.
 

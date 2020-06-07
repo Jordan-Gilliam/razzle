@@ -53,23 +53,14 @@ module.exports = {
         path.join(stagePath, 'packages')
       );
     }
+    shell.cd(stagePath);
     if (yarnlink) {
       fs.ensureSymlinkSync(
         path.join(rootDir, 'node_modules', '.bin'),
         path.join(stagePath, 'node_modules', '.bin')
       );
-      const dirs = fs.readdirSync(packagesPath, { withFileTypes:true })
-        .filter(dirent=>dirent.isDirectory()).map(dir=>dir.name);
-      for (const packageName of dirs) {
-        const packagePath = path.join(packagesPath, packageName);
-        shell.cd(packagePath);
-        shell.exec(`yarn link`);
-        shell.cd(stagePath);
-        shell.exec(`yarn link ${packageName}`);
-        console.log(`Linked ${packageName} to ${stagePath}`);
-      }
+      shell.exec(`yarn link ../ --all`);
     }
-    shell.cd(stagePath);
     if (install) {
       shell.exec("NODE_ENV=development yarn install");
     }

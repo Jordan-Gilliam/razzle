@@ -1,5 +1,4 @@
 
-
 ![repo-banner](https://user-images.githubusercontent.com/4060187/28923990-050a32d4-782e-11e7-9da7-574ce5a8b455.png)
 
 [![CircleCI](https://circleci.com/gh/jaredpalmer/razzle/tree/master.svg?style=shield)](https://circleci.com/gh/jaredpalmer/razzle/tree/master) ![Razzle-status](https://david-dm.org/jaredpalmer/razzle.svg?path=packages/razzle) [![npm version](https://badge.fury.io/js/razzle.svg)](https://badge.fury.io/js/razzle) [![Known Vulnerabilities](https://snyk.io/test/npm/razzle/badge.svg)](https://snyk.io/test/npm/razzle) [![Greenkeeper badge](https://badges.greenkeeper.io/jaredpalmer/razzle.svg)](https://greenkeeper.io/) [![Join the community on Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/palmer)
@@ -85,14 +84,18 @@ If your application is running, and you need to manually restart your server, yo
   - [`npm start -- --inspect-brk=[host:port]` or `yarn start -- --inspect-brk=[host:port]`](#npm-start------inspect-brkhostport-or-yarn-start------inspect-brkhostport)
   - [`rs`](#rs)
 - [<img src="https://user-images.githubusercontent.com/4060187/37915268-209644d0-30e7-11e8-8ef7-086b529ede8c.png" width="500px" alt="Razzle Hot Restart"/>](#img-srchttpsuser-imagesgithubusercontentcom406018737915268-209644d0-30e7-11e8-8ef7-086b529ede8cpng-width500px-altrazzle-hot-restart)
+- [Build Types](#build-types)
 - [Customization](#customization)
   - [Plugins](#plugins)
     - [Using Plugins](#using-plugins)
     - [Writing Plugins](#writing-plugins)
+      - [New in razzle 3.2](#new-in-razzle-32)
   - [Customizing Babel Config](#customizing-babel-config)
   - [Extending Webpack](#extending-webpack)
+    - [New in razzle 3.2](#new-in-razzle-32-1)
   - [CSS Modules](#css-modules)
   - [Polyfills](#polyfills)
+  - [Experimental](#experimental)
 - [Environment Variables](#environment-variables)
   - [Build-time Variables](#build-time-variables)
   - [Runtime Variables](#runtime-variables)
@@ -102,6 +105,7 @@ If your application is running, and you need to manually restart your server, yo
   - [Adding Environment Variables In `.env`](#adding-environment-variables-in-env)
   - [Expanding Environment Variables In `.env`](#expanding-environment-variables-in-env)
     - [What other `.env` files are can be used?](#what-other-env-files-are-can-be-used)
+- [create-razzle-app](#create-razzle-app)
 - [How Razzle works (the secret sauce)](#how-razzle-works-the-secret-sauce)
 - [Inspiration](#inspiration)
     - [Author](#author)

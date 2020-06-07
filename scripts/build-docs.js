@@ -1,5 +1,6 @@
 'use strict';
 
+const execa = require('execa');
 const updateSection = require('update-section');
 const transform = require('doctoc/lib/transform');
 const fs = require('fs-extra');
@@ -24,9 +25,9 @@ function stripGetToc(content) {
     , info = updateSection.parse(lines, matchesStart, matchesEnd);
   if (info.hasStart&&info.hasEnd) {
     return {
-      stripped: lines.slice(0, info.startIdx).join('\n') +
+      stripped: lines.slice(1, info.startIdx).join('\n') +
         lines.slice(info.endIdx+1).join('\n'),
-      toc: lines.slice(info.startIdx, info.endIdx+1).join('\n')
+      toc: lines.slice(info.startIdx, info.endIdx+1).join('\n')+'\n'
     }
   }
   return {
@@ -43,6 +44,7 @@ const docs = [
 for (let doc of docs) {
   fs.readFile(doc).then(data=>{
     const tocInfo = stripGetToc(data.toString());
+    console.log(tocInfo.stripped)
     const newToc = transform(tocInfo.stripped).data;
     const newTocInfo = stripGetToc(newToc);
     return newTocInfo.stripped.replace(insertRe, insert + newTocInfo.toc);

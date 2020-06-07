@@ -1,4 +1,4 @@
-# Razzle Single Page App Example
+# MDX + Razzle
 
 ## How to use
 
@@ -18,14 +18,13 @@ yarn install --frozen-lockfile --ignore-engines --network-timeout 30000
 Create and start the example:
 
 ```bash
-node_modules/.bin/create-razzle-app --example file:examples/basic-spa basic-spa --no-install
+node_modules/.bin/create-razzle-app --example file:examples/with-mdx with-mdx --no-install
 
-cd basic-spa
+cd with-mdx
 yarn link ../ --all
 yarn start
 ```
 <!-- END install generated instructions please keep comment here to allow auto update -->
 
-## Idea behind the example
 
-This is a basic, bare-bones example of how to use razzle to build a single page application (instead of a universal/isomorphic application). It satisfies the entry point `src/client.js` for the browser and includes a template HTML file in `public/index.html`.
+[See documentation](https://mdxjs.com/getting-started/razzle)

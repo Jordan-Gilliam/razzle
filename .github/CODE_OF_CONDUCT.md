@@ -10,11 +10,12 @@
   - [Our Pledge](#our-pledge)
   - [Our Standards](#our-standards)
   - [Our Responsibilities](#our-responsibilities)
-  - [Scope](#scope)
+  - [Scopen](#scopen)
   - [Enforcement](#enforcement)
   - [Attribution](#attribution)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Our Pledge
 
 In the interest of fostering an open and welcoming environment, we as
@@ -23,6 +24,7 @@ our community a harassment-free experience for everyone, regardless of age, body
 size, disability, ethnicity, gender identity and expression, level of experience,
 nationality, personal appearance, race, religion, or sexual identity and
 orientation.
+
 
 ## Our Standards
 
@@ -58,7 +60,7 @@ that are not aligned to this Code of Conduct, or to ban temporarily or
 permanently any contributor for other behaviors that they deem inappropriate,
 threatening, offensive, or harmful.
 
-## Scope
+## Scopen
 
 This Code of Conduct applies both within project spaces and in public spaces
 when an individual is representing the project or its community. Examples of
